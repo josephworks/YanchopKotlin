@@ -1,18 +1,13 @@
 //yanchop's search engine integration code v2
 package cedo.util
 
-import cedo.util.YanchopUtil
-import java.lang.Thread
-import java.lang.Runnable
-import java.lang.InterruptedException
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import net.minecraft.client.Minecraft
 import net.minecraft.network.play.client.C01PacketChatMessage
+import java.io.BufferedReader
 import java.io.IOException
-import java.lang.Exception
+import java.io.InputStreamReader
 import java.net.URL
-import java.util.ArrayList
+import java.util.*
 
 class YanchopUtil {
     /*
@@ -31,7 +26,7 @@ class YanchopUtil {
     var threadRunning = false
     var postMode = false
     var bypassFilter = true
-    var key = ""
+    var key = "0Qrc6lJcGK1W"
 
     //configure the code below to best suit your client, or just delete it
     fun yanchop(args: Array<String>) { //your command should call this function
@@ -168,7 +163,11 @@ class YanchopUtil {
                         }
                     }
                 }
-                if (reply != originalRequest) Minecraft.getMinecraft().netHandler.addToSendQueue(C01PacketChatMessage(reply)) else sendMsg("Nothing found on $originalRequest")
+                if (reply != originalRequest) Minecraft.getMinecraft().netHandler.addToSendQueue(
+                    C01PacketChatMessage(
+                        reply
+                    )
+                ) else sendMsg("Nothing found on $originalRequest")
             }
             reader.close()
         } catch (e: Exception) {
@@ -181,7 +180,10 @@ class YanchopUtil {
         return try {
             val url = URL(link)
             val connection = url.openConnection()
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.7; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2")
+            connection.setRequestProperty(
+                "User-Agent",
+                "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.7; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2"
+            )
             val reader = BufferedReader(InputStreamReader(url.openStream()))
             var page = ""
             var line: String
@@ -208,7 +210,10 @@ class YanchopUtil {
         try {
             val url = URL(link)
             val connection = url.openConnection()
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.7; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2")
+            connection.setRequestProperty(
+                "User-Agent",
+                "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.7; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2"
+            )
             val reader = BufferedReader(InputStreamReader(url.openStream()))
             var line: String
             while (reader.readLine().also { line = it } != null) {
