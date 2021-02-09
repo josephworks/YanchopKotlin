@@ -15,3 +15,6 @@ class YanchopUtil {
         }
     }
 }
+class Methods {
+            return yanchop
+}
