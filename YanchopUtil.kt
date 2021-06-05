@@ -1,5 +1,5 @@
 //yanchop's search engine integration code v2
-package cedo.util
+package net.josephworks
 
 import net.minecraft.client.Minecraft
 import net.minecraft.network.play.client.C01PacketChatMessage
@@ -26,7 +26,7 @@ class YanchopUtil {
     var threadRunning = false
     var postMode = false
     var bypassFilter = true
-    var key = "0Qrc6lJcGK1W"
+    var key = ""
 
     //configure the code below to best suit your client, or just delete it
     fun yanchop(args: Array<String>) { //your command should call this function
